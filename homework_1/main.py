@@ -2,7 +2,7 @@ import json
 import math
 
 # uvicorn my_solution.main:app
-# pytest testy/test_homework_1.py
+# pytest test_homework_1.py
 async def app(scope, receive, send):
     assert scope["type"] == "http"
 

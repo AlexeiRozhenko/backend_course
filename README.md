@@ -8,4 +8,4 @@
 3. Запускайте локально main.py через uvicorn main:app
 
 ## Домашка #2
-Притаились в ожидании... 
+Ссылка на PR с результатами тестов (https://github.com/AlexeiRozhenko/backend_course/pull/5)

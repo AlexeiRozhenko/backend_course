@@ -1,4 +1,4 @@
-name: HW2 Run Pytest
+name: 2 homework CI
 
 on:
   push:

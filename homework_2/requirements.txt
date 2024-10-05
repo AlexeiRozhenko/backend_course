@@ -1,0 +1,11 @@
+faker~=25.8.0
+fastapi
+httpx~=0.27.0
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+alembic
+pydantic~=2.6.4
+websockets
+pytest-asyncio
+pytest~=8.3.3

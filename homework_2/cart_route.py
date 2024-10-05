@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query
 from http import HTTPStatus
 from typing import Optional
 
-from starlette.responses import JSONResponse
+from fastapi.responses import JSONResponse
 
 from models import Cart, Cart_Item
 from functions import id_gen_cart
@@ -24,7 +24,7 @@ def create_cart() -> JSONResponse:
     return JSONResponse(
         content={"id": cart_id, "cart": new_cart.dict()},
         status_code=HTTPStatus.CREATED,
-        headers={"Location": location_url}
+        headers={"location": location_url}
     )
 
 

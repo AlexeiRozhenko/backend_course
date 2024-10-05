@@ -76,7 +76,6 @@ def deleted_item(client, existing_item: dict[str, Any]) -> dict[str, Any]:
     return existing_item
 
 
-@pytest.mark.xfail()
 def test_post_cart(client) -> None:
     response = client.post("/cart")
 

@@ -2,7 +2,7 @@ from fastapi import APIRouter, Query
 from http import HTTPStatus
 from typing import Optional
 
-from starlette.responses import JSONResponse
+from fastapi.responses import JSONResponse
 
 from models import Item, Update_Item, Create_Item
 from functions import id_gen_item
@@ -87,15 +87,15 @@ def update_item(item_id: int, params: Update_Item):
                 content={"detail": "Item is deleted and cannot be modified."}
             )
 
-        if params is not None and params.deleted:
+        if params and params.deleted:
             return JSONResponse(
                 status_code=HTTPStatus.UNPROCESSABLE_ENTITY,
                 content={"detail": "Setting 'deleted' to True is not allowed."}
             )
 
-        if params.name is not None:
+        if params.name:
             item.name = params.name
-        if params.price is not None:
+        if params.price:
             item.price = params.price
 
         return JSONResponse(content=item.dict())

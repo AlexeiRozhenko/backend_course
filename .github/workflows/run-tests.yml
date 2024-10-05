@@ -1,33 +1,25 @@
-name: Run Python tests
+name: HW2 Run Pytest
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
+    branches:
+      - '**'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.12"]
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Cache pip dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
@@ -35,5 +27,24 @@ jobs:
           pip install pytest
           pip install -r homework_2/requirements.txt
 
-      - name: Run tests
-        run: pytest -vv --strict-markers --showlocals
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/homework_2" >> $GITHUB_ENV
+
+      - name: Set up Docker Compose for API tests
+        working-directory: homework_2
+        run: docker compose up -d
+
+      - name: Wait for the app to be ready
+        run: |
+          until curl --silent http://localhost:8000/; do
+            echo "Waiting for app to be ready..."
+            sleep 2
+          done
+
+      - name: Run API tests
+        run: |
+          pytest /tests
+
+      - name: Tear down Docker Compose
+        working-directory: homework_2
+        run: docker compose down

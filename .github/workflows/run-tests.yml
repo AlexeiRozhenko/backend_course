@@ -43,7 +43,7 @@ jobs:
 
       - name: Run API tests
         run: |
-          pytest /tests
+          pytest tests
 
       - name: Tear down Docker Compose
         working-directory: homework_2

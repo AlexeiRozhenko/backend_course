@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from pydantic import BaseModel, SecretStr
-from lecture_4.demo_service.core.users import UserEntity, UserRole
+from homework_4.demo_service.core.users import UserEntity, UserRole
 
 
 class RegisterUserRequest(BaseModel):

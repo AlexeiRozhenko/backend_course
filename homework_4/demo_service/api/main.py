@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from lecture_4.demo_service.api import users, utils
+from homework_4.demo_service.api import users, utils
 from prometheus_fastapi_instrumentator import Instrumentator
 
 # Instrument your FastAPI application to expose metrics

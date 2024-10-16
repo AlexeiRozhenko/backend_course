@@ -3,8 +3,8 @@ import pytest
 import datetime
 from http import HTTPStatus
 from fastapi.testclient import TestClient
-from lecture_4.demo_service.api.contracts import UserResponse
-from lecture_4.demo_service.api.main import create_app
+from homework_4.demo_service.api.contracts import UserResponse
+from homework_4.demo_service.api.main import create_app
 
 app = create_app()
 # pytest --cov=lecture_4 tests/lecture_4/hw/test_2.py

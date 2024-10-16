@@ -25,10 +25,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-          pip install -r lecture_4/requirements.txt
+          pip install -r homework_4/requirements.txt
           
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/lecture_4" >> $GITHUB_ENV
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/homework_4" >> $GITHUB_ENV
 
-      - name: Run lecture 4 tests
-        run: pytest -vv --strict --showlocals --cov=lecture_4 ./tests/lecture_4/hw/*.py
+      - name: Run homework_4 tests
+        run: pytest -vv --strict --showlocals --cov=homework_4 ./tests/homework_4/hw/*.py

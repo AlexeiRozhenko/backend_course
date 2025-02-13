@@ -9,3 +9,6 @@
 
 ## Домашка #2
 Ссылка на PR с результатами тестов (https://github.com/AlexeiRozhenko/backend_course/pull/5)
+
+## Домашка #3 и #4
+Есть в ветках
